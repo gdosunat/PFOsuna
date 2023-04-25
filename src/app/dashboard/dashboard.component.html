@@ -1,0 +1,38 @@
+<mat-drawer-container class="dashboard-container" autosize>
+
+  <mat-drawer #drawer class="sidenav" mode="side">
+    <div class="header-container">
+      <p class="title">Menu principal</p>
+    </div>
+    <mat-nav-list>
+      <a
+        [routerLink]="link.path"
+        mat-list-item
+        *ngFor="let link of links"
+      >
+        <mat-icon>{{link.icon}}</mat-icon>{{link.title}}
+    </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <mat-toolbar color="primary" role="heading">
+      <div class="flex justify-content-between">
+        <div>
+          <button
+            (click)="drawer.toggle()"
+            mat-icon-button
+            class="example-icon"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <span appFontSize>Proyecto Final</span>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</mat-drawer-container>
