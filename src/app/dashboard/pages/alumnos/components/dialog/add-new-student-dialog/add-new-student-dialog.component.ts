@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
-import { Alumno } from 'src/app/dashboard/models';
+import { Alumno } from '../../../models';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 

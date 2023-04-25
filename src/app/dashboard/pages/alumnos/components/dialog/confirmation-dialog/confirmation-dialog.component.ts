@@ -1,7 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Alumno } from 'src/app/dashboard/models';
+import { Alumno } from '../../../models';
 
 @Component({
   selector: 'app-confirmation-dialog',
