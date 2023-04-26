@@ -6,3 +6,11 @@ export interface Curso {
   fechaFin: Date,
   info: string
 }
+
+export interface CrearCursoPayload {
+  nombre: string,
+  categoria: string,
+  fechaInicio: Date,
+  fechaFin: Date,
+  info: string
+}

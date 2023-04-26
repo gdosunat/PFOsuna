@@ -59,7 +59,7 @@ export class AlumnosService {
        .subscribe({
          next: (alumnos) => {
 
-           const cursosActualizados = alumnos.map((alumno) => {
+           const alumnosUpdated = alumnos.map((alumno) => {
              if (alumno.id === idAlumno) {
                return {
                  ...alumno,
@@ -70,7 +70,7 @@ export class AlumnosService {
              }
            })
 
-           this.alumnos$.next(cursosActualizados);
+           this.alumnos$.next(alumnosUpdated);
          },
          complete: () => {},
          error: () => {}

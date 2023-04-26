@@ -9,30 +9,30 @@
             <mat-error *ngFor="let error of nombreControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="mid-width">
-            <mat-label>Apellido</mat-label>
-            <input matInput required [formControl]="apellidoControl">
+            <mat-label>Categoria</mat-label>
+            <input matInput required [formControl]="categoriaControl">
             <mat-hint>El apellido de tener como minimo 4 caracteres</mat-hint>
-            <mat-error *ngFor="let error of apellidoControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+            <mat-error *ngFor="let error of categoriaControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
     </mat-form-field>
     </div>
     <div>
-      <h4 class="mb-1">Sexo</h4>
-      <mat-button-toggle-group [formControl]="sexoControl" aria-label="Font Style" required>
+      <h4 class="mb-1">Fecha de inicio</h4>
+      <mat-button-toggle-group [formControl]="fechaInicioControl" aria-label="Font Style" required>
         <mat-button-toggle value="Femenino">Femenino</mat-button-toggle>
         <mat-button-toggle value="Masculino">Masculino</mat-button-toggle>
       </mat-button-toggle-group>
-      <mat-error *ngFor="let error of sexoControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+      <mat-error *ngFor="let error of fechaInicioControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
     </div>
     <mat-form-field appearance="fill" class="full-width mt-2">
-      <mat-label>Email</mat-label>
-      <input matInput required [formControl]="emailControl">
+      <mat-label>Fecha de finalizacion</mat-label>
+      <input matInput required [formControl]="fechaFinControl">
       <mat-icon matSuffix>email</mat-icon>
-      <mat-error *ngFor="let error of emailControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+      <mat-error *ngFor="let error of fechaFinControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Pais</mat-label>
-      <input matInput required [formControl]="paisControl">
-      <mat-error *ngFor="let error of paisControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+      <mat-label>Informacion</mat-label>
+      <input matInput required [formControl]="infoControl">
+      <mat-error *ngFor="let error of infoControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
     </mat-form-field>
 </form>
 </mat-dialog-content>

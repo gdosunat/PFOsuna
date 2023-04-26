@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Curso } from '../models';
+import { Curso, CrearCursoPayload } from '../models';
 import { BehaviorSubject, Observable, take } from 'rxjs';
 
 @Injectable({
@@ -24,4 +24,65 @@ export class CursosService {
     this.cursos$.next(this.cursos);
     return this.cursos$.asObservable();
   }
+
+  addNewCurso(cursoPayload: CrearCursoPayload): Observable<Curso[]>{
+    this.cursos$
+    .pipe(
+      take(1)
+    ).subscribe({
+      next: (cursos) => {
+        this.cursos$.next([
+          ...cursos,
+          {
+            id: cursos[cursos.length - 1].id + 1,
+            ...cursoPayload
+          }
+        ]);
+      },
+      complete: () => {},
+      error: () => {}
+    });
+
+    return this.cursos$.asObservable();
+  }
+
+  modifyCurso(cursoId: number, cursoUpdated: Curso): Observable<Curso[]>{
+    this.cursos$
+    .pipe(
+      take(1)
+    ).subscribe((cursos) => {
+
+      const cursosUpdated = cursos.map((curso) => {
+        if(curso.id == cursoId){
+          return {
+            ...curso,
+            ...cursoUpdated
+          }
+        } else {
+            return curso;
+        }
+      });
+
+      this.cursos$.next(cursosUpdated);
+    });
+
+    return this.cursos$.asObservable();
+  }
+
+  deleteCurso(cursoId: number): Observable<Curso[]>{
+    this.cursos$
+    .pipe(
+      take(1)
+    ).subscribe({
+      next: (cursos) => {
+        const cursosUpdated = cursos.filter((curso) => curso.id != cursoId);
+        this.cursos$.next(cursosUpdated);
+      },
+      complete: () => {},
+      error: () => {}
+    });
+
+    return this.cursos$.asObservable();
+  }
+
 }
