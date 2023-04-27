@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Curso } from '../../../models';
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
+import { CursosService } from '../../../services/cursos.service';
+import { Event } from '@angular/router';
 
 @Component({
   selector: 'app-add-new-curso-dialog',
@@ -10,7 +12,13 @@ import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
   styleUrls: ['./add-new-curso-dialog.component.scss']
 })
 export class AddNewCursoDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Curso,  private dialogRef: MatDialogRef<AddNewCursoDialogComponent>, private matDialog: MatDialog) {
+  constructor(
+      @Inject(MAT_DIALOG_DATA) 
+      public data: Curso,  
+      private dialogRef: MatDialogRef<AddNewCursoDialogComponent>, 
+      private matDialog: MatDialog,
+      private cursosService: CursosService
+    ) {
     if(data){
       this.nombreControl.setValue(data.nombre),
       this.categoriaControl.setValue(data.categoria),
@@ -20,7 +28,8 @@ export class AddNewCursoDialogComponent {
     }
    }
 
-  isNewRecord = !this.data;
+  title = this.data ? "Editar Curso" : "Agregar Curso";
+  categorias = this.cursosService.getAllCursoCategorias();
 
   nombreControl = new FormControl('', [Validators.required, Validators.minLength(5)])
   categoriaControl = new FormControl('', [Validators.required, Validators.minLength(4)])
@@ -37,7 +46,6 @@ export class AddNewCursoDialogComponent {
   })
 
   submitForm(): void {
-
     if(this.registerForm.valid){
       this.dialogRef.close(this.registerForm.value);
     } else {
@@ -48,5 +56,4 @@ export class AddNewCursoDialogComponent {
   close(){
     this.dialogRef.close();
   }
-
 }

@@ -14,7 +14,3 @@ export interface CrearAlumnoPayload {
   email: string,
   pais: string
 }
-
-export interface Curso {
-  
-}

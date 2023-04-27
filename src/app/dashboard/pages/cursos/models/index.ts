@@ -9,8 +9,14 @@ export interface Curso {
 
 export interface CrearCursoPayload {
   nombre: string,
-  categoria: string,
+  categoria: CategoriasCursos,
   fechaInicio: Date,
   fechaFin: Date,
   info: string
+}
+
+export enum CategoriasCursos {
+  PROGRAMACION = "Programacion",
+  DISEÑO_UX_UI = "Diseño UX/UI",
+  DATA = "Data"
 }

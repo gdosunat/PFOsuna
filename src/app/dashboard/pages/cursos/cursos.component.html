@@ -46,6 +46,9 @@
       <button mat-icon-button color="warn" (click)="openConfirmationDialog(curso)">
         <mat-icon>delete</mat-icon>
     </button>
+    <a [routerLink]="curso.id">
+      <mat-icon>remove_red_eye</mat-icon>
+    </a>
     </td>
   </ng-container>
 

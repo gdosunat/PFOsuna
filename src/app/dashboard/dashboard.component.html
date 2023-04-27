@@ -5,13 +5,11 @@
       <p class="title">Menu principal</p>
     </div>
     <mat-nav-list>
-      <a
-        [routerLink]="link.path"
-        mat-list-item
-        *ngFor="let link of links"
-      >
-        <mat-icon>{{link.icon}}</mat-icon>{{link.title}}
-    </a>
+      <mat-list-item *ngFor="let link of links">
+        <button mat-flat-button routerLink="{{ link.path }}">
+          {{ link.title }}
+        </button>
+      </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
 

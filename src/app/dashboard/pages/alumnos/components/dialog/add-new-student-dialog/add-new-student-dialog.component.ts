@@ -21,7 +21,7 @@ export class AddNewStudentDialogComponent {
     }
    }
 
-  isNewRecord = !this.data;
+  title = this.data ? "Editar Alumno" : "Agregar Alumno";
 
   nombreControl = new FormControl('', [Validators.required, Validators.minLength(5)])
   apellidoControl = new FormControl('', [Validators.required, Validators.minLength(4)])

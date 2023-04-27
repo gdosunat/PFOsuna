@@ -22,10 +22,21 @@ export class AlumnosService {
   ]
 
   private alumnos$ = new BehaviorSubject<Alumno[]>([]);
+  private alumno$ = new BehaviorSubject<Alumno>({id: 0, nombre: "", apellido: "", sexo:"", pais: "", email: ""});
 
   getAllAlumnos(): Observable<Alumno[]>{
     this.alumnos$.next(this.alumnos);
     return this.alumnos$.asObservable();
+  }
+
+  getAlumnoByName(nombre: string): Observable<Alumno>{
+    this.alumno$.next(this.alumnos.filter((alumno) => alumno.nombre == nombre)[0]);
+    return this.alumno$.asObservable();
+  }
+
+  getAlumnoById(id: number): Observable<Alumno>{
+    this.alumno$.next(this.alumnos.filter((alumno) => alumno.id == id)[0]);
+    return this.alumno$.asObservable();
   }
 
   addNewAlumno(alumnoPayload: CrearAlumnoPayload): Observable<Alumno[]>{

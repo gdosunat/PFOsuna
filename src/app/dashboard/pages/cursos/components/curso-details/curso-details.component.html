@@ -1,0 +1,16 @@
+<div class="container p-2 pt-4">
+  <h1>{{curso.nombre}}</h1>
+  <mat-divider></mat-divider>
+  <div class="col-6">
+    <p class="py-2 fw-bold">Categoria: {{curso.categoria}}</p>
+    <h2>Sobre el curso</h2>
+    <p>{{curso.info}}</p>
+  </div>
+  <mat-divider/>
+  <div class="col-6">
+    <h2>Fechas Disponibles</h2>
+    <p>Inicia: {{curso.fechaInicio | date}}</p>
+    <p>Finaliza: {{curso.fechaFin | date}}</p>
+  </div>
+  <mat-divider/>
+</div>
