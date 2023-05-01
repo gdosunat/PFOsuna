@@ -8,15 +8,16 @@ import { InscripcionesService } from '../../services/inscripciones.service';
   styleUrls: ['./inscripcion-details.component.scss']
 })
 export class InscripcionDetailsComponent implements OnInit {
-  
+
   constructor(
     private route: ActivatedRoute,
     private inscripcionesService: InscripcionesService
   ){}
-  
+
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
      this.inscripcionesService.getInscripcionById(params['id']).subscribe((inscripcion) => this.inscripcion = inscripcion);
+     this.inscripcion.alumno.sexo == "Femenino" ? "assets/img/female-icon.jpg" : "assets/img/male-icon.jpg";
    })
   }
 
@@ -27,6 +28,6 @@ export class InscripcionDetailsComponent implements OnInit {
   }
 
   id = 0;
-  icon = this.inscripcion.alumno.sexo == "Femenino" ? "assets/img/female-icon.jpg" : "assets/img/male-icon.jpg";
+  icon = ""
 
 }
