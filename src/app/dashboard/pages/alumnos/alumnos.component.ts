@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Alumno, CrearAlumnoPayload } from '../../models';
-import { AlumnosService } from '../../services/alumnos.service';
+import { Alumno, CrearAlumnoPayload } from './models';
+import { AlumnosService } from './services/alumnos.service';
 import { AddNewStudentDialogComponent } from './components/dialog/add-new-student-dialog/add-new-student-dialog.component';
 import { ConfirmationDialogComponent } from './components/dialog/confirmation-dialog/confirmation-dialog.component';
 

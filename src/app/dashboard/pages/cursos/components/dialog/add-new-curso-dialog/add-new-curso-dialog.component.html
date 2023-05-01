@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="registerForm" class="form">
+    <div class="mb-4 row">
+        <mat-form-field appearance="fill" class="mr-2 mid-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput required [formControl]="nombreControl">
+            <mat-hint>El nombre de tener como minimo 5 caracteres</mat-hint>
+            <mat-error *ngFor="let error of nombreControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Categoria</mat-label>
+        <mat-select [formControl]="categoriaControl">
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria" >
+            {{categoria}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6">
+      <mat-form-field class="w-full">
+        <mat-label>Fecha de inicio</mat-label>
+        <input [formControl]="fechaInicioControl" matInput [matDatepicker]="fechaInicioPicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="fechaInicioPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fechaInicioPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-12">
+      <mat-form-field class="w-full">
+        <mat-label>Fecha de fin</mat-label>
+        <input [formControl]="fechaFinControl" matInput [matDatepicker]="fechaFinPicker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="fechaFinPicker"></mat-datepicker-toggle>
+        <mat-datepicker #fechaFinPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Informacion</mat-label>
+      <textarea matInput required [formControl]="infoControl">
+      </textarea>
+      <mat-error *ngFor="let error of infoControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+    </mat-form-field>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="submitForm()">Guardar</button>
+</mat-dialog-actions>

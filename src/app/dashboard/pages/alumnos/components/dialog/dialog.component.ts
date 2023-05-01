@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
-import { Alumno } from 'src/app/dashboard/models';
+import { Alumno } from '../../models';
 
 
 @Component({
