@@ -1,0 +1,86 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Lupita",
+      "email": "lupita@email.com",
+      "password": "123456",
+      "token": "knaejhbghdasdaASASADdjsahashwq",
+      "rol": "admin"
+    }
+  ],
+  "alumnos": [
+    {
+      "id": 1,
+      "nombre": "Guadalupe",
+      "apellido": "Osuna",
+      "sexo": "Femenino",
+      "email": "lupita@email.com",
+      "pais": "Mexico"
+    },
+    {
+      "id": 2,
+      "nombre": "Berenice",
+      "apellido": "Apodaca",
+      "sexo": "Femenino",
+      "email": "bere@email.com",
+      "pais": "Mexico"
+    },
+    {
+      "id": 3,
+      "nombre": "Liliana",
+      "apellido": "Osuna",
+      "sexo": "Femenino",
+      "email": "lili@email.com",
+      "pais": "Mexico"
+    },
+    {
+      "id": 4,
+      "nombre": "Ricardo",
+      "apellido": "Ramos",
+      "sexo": "Masculino",
+      "email": "ricardo@email.com",
+      "pais": "Mexico"
+    },
+    {
+      "id": 5,
+      "nombre": "Maricarmen",
+      "apellido": "Colado",
+      "sexo": "Femenino",
+      "email": "mari@email.com",
+      "pais": "Mexico"
+    },
+    {
+      "id": 6,
+      "nombre": "Alison",
+      "apellido": "Arias",
+      "sexo": "Femenino",
+      "email": "ali@email.com",
+      "pais": "Mexico"
+    },
+    {
+      "id": 7,
+      "nombre": "Ivan",
+      "apellido": "Osuna",
+      "sexo": "Masculino",
+      "email": "Ivan@email.com",
+      "pais": "Mexico"
+    },
+    {
+      "id": 8,
+      "nombre": "Rosina",
+      "apellido": "Osuna",
+      "sexo": "Femenino",
+      "email": "rosii@email.com",
+      "pais": "Mexico"
+    },
+    {
+      "id": 9,
+      "nombre": "Luis",
+      "apellido": "Tirado",
+      "sexo": "Masculino",
+      "email": "luis@email.com",
+      "pais": "Mexico"
+    }
+  ]
+}

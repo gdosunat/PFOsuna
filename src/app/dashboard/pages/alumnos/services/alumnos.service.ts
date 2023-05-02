@@ -1,108 +1,103 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, take } from 'rxjs';
 import { Alumno, CrearAlumnoPayload } from '../models';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlumnosService {
 
-  constructor() { }
-
-  alumnos = [
-    {id: 1, nombre: "Guadalupe", apellido: "Osuna", sexo: "Femenino", email: "lupita@email.com", pais: "Mexico"},
-    {id: 2, nombre: "Berenice", apellido: "Apodaca", sexo: "Femenino", email: "bere@email.com", pais: "Mexico"},
-    {id: 3, nombre: "Liliana", apellido: "Osuna", sexo: "Femenino", email: "lili@email.com", pais: "Mexico"},
-    {id: 4, nombre: "Ricardo", apellido: "Ramos", sexo: "Masculino", email: "ricardo@email.com", pais: "Mexico"},
-    {id: 5, nombre: "Maricarmen", apellido: "Colado", sexo: "Femenino", email: "mari@email.com", pais: "Mexico"},
-    {id: 6, nombre: "Alison", apellido: "Arias", sexo: "Femenino", email: "ali@email.com", pais: "Mexico"},
-    {id: 7, nombre: "Ivan", apellido: "Osuna", sexo: "Masculino", email: "Ivan@email.com", pais: "Mexico"},
-    {id: 8, nombre: "Rosina", apellido: "Osuna", sexo: "Femenino", email: "rosii@email.com", pais: "Mexico"},
-    {id: 9, nombre: "Luis", apellido: "Tirado", sexo: "Masculino", email: "luis@email.com", pais: "Mexico"}
-  ]
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   private alumnos$ = new BehaviorSubject<Alumno[]>([]);
   private alumno$ = new BehaviorSubject<Alumno>({id: 0, nombre: "", apellido: "", sexo:"", pais: "", email: ""});
 
   getAllAlumnos(): Observable<Alumno[]>{
-    this.alumnos$.next(this.alumnos);
+    this.httpClient.get<Alumno[]>(`http://localhost:3000/alumnos`)
+    .subscribe((alumnos) =>{
+      if(alumnos){
+        this.alumnos$.next(alumnos);
+      }
+    })
     return this.alumnos$.asObservable();
   }
 
-  getAlumnoByName(nombre: string): Observable<Alumno>{
-    this.alumno$.next(this.alumnos.filter((alumno) => alumno.nombre == nombre)[0]);
-    return this.alumno$.asObservable();
-  }
-
   getAlumnoById(id: number): Observable<Alumno>{
-    this.alumno$.next(this.alumnos.filter((alumno) => alumno.id == id)[0]);
+    this.httpClient.get<Alumno[]>(`http://localhost:3000/alumnos`, {
+      params: {
+        id: id
+      }
+    })
+    .subscribe((alumnos) => {
+      if(alumnos){
+        this.alumno$.next(alumnos[0]);
+      } else {
+        console.log("ERROR: Usuario no encontrado")
+      }
+    })
+
     return this.alumno$.asObservable();
   }
 
   addNewAlumno(alumnoPayload: CrearAlumnoPayload): Observable<Alumno[]>{
-    this.alumnos$
-    .pipe(
-      take(1)
-    )
-    .subscribe({
-      next: (alumnos) => {
-        this.alumnos$.next([
-          ...alumnos,
-          {
-            id: alumnos[alumnos.length - 1].id + 1,
-            ...alumnoPayload,
-          },
-        ]);
-      },
-      complete: () => {},
-      error: () => {}
-    });
-
-
+    this.httpClient.post<Alumno>(`http://localhost:3000/alumnos`, alumnoPayload).subscribe((nuevoAlumno) => {
+      this.alumnos$
+      .pipe(
+        take(1)
+      )
+      .subscribe({
+        next: (alumnos => {
+          alumnos.push(nuevoAlumno);
+          this.alumnos$.next(alumnos)
+        })
+      })
+    })
     return this.alumnos$.asObservable();
   }
 
   modifyAlumno(idAlumno: number, alumnoUpdated: Alumno): Observable<Alumno[]>{
-    this.alumnos$
+    this.httpClient.put<Alumno>(`http://localhost:3000/alumnos/${idAlumno}`, alumnoUpdated).subscribe((alumnoUpdated) => {
+      this.alumnos$
       .pipe(
-        take(1),
+        take(1)
       )
-       .subscribe({
-         next: (alumnos) => {
+      .subscribe({
+        next: (alumnos => {
+          const alumnosUpdated = alumnos.map((alumno) => {
+            if (alumno.id === idAlumno) {
+              return {
+                ...alumno,
+                ...alumnoUpdated,
+              }
+            } else {
+              return alumno;
+            }
+          })
 
-           const alumnosUpdated = alumnos.map((alumno) => {
-             if (alumno.id === idAlumno) {
-               return {
-                 ...alumno,
-                 ...alumnoUpdated,
-               }
-             } else {
-               return alumno;
-             }
-           })
-
-           this.alumnos$.next(alumnosUpdated);
-         },
-         complete: () => {},
-         error: () => {}
-       });
+          this.alumnos$.next(alumnosUpdated);
+        })
+      })
+    })
 
     return this.alumnos$.asObservable();
   }
 
   deleteAlumno(alumnoId: number): Observable<Alumno[]>{
-    this.alumnos$
-    .pipe(
-      take(1)
-    ).subscribe({
-      next: (alumnos) => {
-        const alumnosUpdated = alumnos.filter((alumno) => alumno.id != alumnoId);
-        this.alumnos$.next(alumnosUpdated);
-      },
-      complete: () => {},
-      error: () => {}
-    });
-
+    this.httpClient.delete<Alumno>(`http://localhost:3000/alumnos/${alumnoId}`).subscribe((response) => {
+      this.alumnos$
+      .pipe(
+        take(1)
+      )
+      .subscribe({
+        next: (alumnos) => {
+          const alumnosUpdated = alumnos.filter((alumno) => alumno.id != alumnoId);
+          this.alumnos$.next(alumnosUpdated);
+        }
+      })
+    })
     return this.alumnos$.asObservable();
   }
 }

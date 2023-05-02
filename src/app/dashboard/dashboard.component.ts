@@ -21,4 +21,8 @@ export class DashboardComponent {
       this.authUser$ = this.authService.getLoggedInUser();
     }
 
+    logout(): void {
+      this.authService.logout();
+    }
+
 }

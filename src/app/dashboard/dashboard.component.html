@@ -20,7 +20,7 @@
 
   <div class="sidenav-content">
     <mat-toolbar color="primary" role="heading">
-      <div class="flex justify-content-between">
+      <div class="flex justify-content-between col-4">
         <div>
           <button
             (click)="drawer.toggle()"
@@ -31,6 +31,15 @@
           </button>
           <span appFontSize>Proyecto Final</span>
         </div>
+      </div>
+      <div class="d-flex justify-content-end col-8">
+        <button
+            mat-flat-button
+            (click)="logout()"
+            class="float-right"
+          >
+          Cerrar Sesión
+          </button>
       </div>
     </mat-toolbar>
 
