@@ -1,0 +1,20 @@
+<h2>Iniciar Sesion</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <mat-form-field class="col-12">
+      <mat-label>Correo</mat-label>
+      <input type="text" matInput [formControl]="emailControl">
+      <mat-error *ngFor="let error of emailControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12">
+      <mat-label>Contaseña</mat-label>
+      <input type="password" matInput [formControl]="passwordControl">
+      <mat-error *ngFor="let error of passwordControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="d-flex justify-content-end">
+    <button color="primary" mat-flat-button type="submit">
+      Ingresar
+    </button>
+  </div>
+</form>

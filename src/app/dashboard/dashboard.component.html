@@ -3,11 +3,16 @@
   <mat-drawer #drawer class="sidenav" mode="side">
     <div class="header-container">
       <p class="title">Menu principal</p>
+
+      <div class="text-center">
+        <img width="50" height="50" src="assets/img/avatar.svg">
+        <p class="d-block fw-bold">{{ (authUser$ | async)?.nombre }}</p>
+      </div>
     </div>
     <mat-nav-list>
       <mat-list-item *ngFor="let link of links">
         <button mat-flat-button routerLink="{{ link.path }}">
-          {{ link.title }}
+          <mat-icon>{{link.icon}}</mat-icon> {{link.title }}
         </button>
       </mat-list-item>
     </mat-nav-list>
