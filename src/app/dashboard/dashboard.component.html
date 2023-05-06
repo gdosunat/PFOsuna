@@ -3,11 +3,16 @@
   <mat-drawer #drawer class="sidenav" mode="side">
     <div class="header-container">
       <p class="title">Menu principal</p>
+
+      <div class="text-center">
+        <img width="50" height="50" src="assets/img/avatar.svg">
+        <p class="d-block fw-bold">{{ (authUser$ | async)?.nombre }}</p>
+      </div>
     </div>
     <mat-nav-list>
       <mat-list-item *ngFor="let link of links">
         <button mat-flat-button routerLink="{{ link.path }}">
-          {{ link.title }}
+          <mat-icon>{{link.icon}}</mat-icon> {{link.title }}
         </button>
       </mat-list-item>
     </mat-nav-list>
@@ -15,7 +20,7 @@
 
   <div class="sidenav-content">
     <mat-toolbar color="primary" role="heading">
-      <div class="flex justify-content-between">
+      <div class="flex justify-content-between col-4">
         <div>
           <button
             (click)="drawer.toggle()"
@@ -26,6 +31,15 @@
           </button>
           <span appFontSize>Proyecto Final</span>
         </div>
+      </div>
+      <div class="d-flex justify-content-end col-8">
+        <button
+            mat-flat-button
+            (click)="logout()"
+            class="float-right"
+          >
+          Cerrar Sesión
+          </button>
       </div>
     </mat-toolbar>
 

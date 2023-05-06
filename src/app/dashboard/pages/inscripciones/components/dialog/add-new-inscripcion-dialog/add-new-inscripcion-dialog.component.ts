@@ -15,15 +15,15 @@ import { Curso } from 'src/app/dashboard/pages/cursos/models';
 })
 export class AddNewInscripcionDialogComponent implements OnInit {
   constructor(
-    @Inject(MAT_DIALOG_DATA) 
-    public data: Inscripcion,  
-    private dialogRef: MatDialogRef<AddNewInscripcionDialogComponent>, 
+    @Inject(MAT_DIALOG_DATA)
+    public data: Inscripcion,
+    private dialogRef: MatDialogRef<AddNewInscripcionDialogComponent>,
     private matDialog: MatDialog,
     private alumnosService: AlumnosService,
     private cursosService: CursosService
   ) {
   if(data){
-    this.alumnoControl.setValue(data.alumno.nombre);
+    this.alumnoControl.setValue(data.alumno);
     this.cursoControl.setValue(data.curso.nombre);
   }
  }
@@ -33,7 +33,7 @@ export class AddNewInscripcionDialogComponent implements OnInit {
     .subscribe((alumnos) => {
       this.alumnos = alumnos;
    });
-  
+
    this.cursosService.getAllCursos()
    .subscribe((cursos) => {
     this.cursos = cursos;
@@ -44,7 +44,7 @@ title = this.data ? "Editar Inscripcion" : "Agregar Inscripcion";
 alumnos: Alumno[] = []
 cursos: Curso[] = []
 
-alumnoControl = new FormControl('', [Validators.required])
+alumnoControl = new FormControl({nombre: "", id: 0}, [Validators.required])
 cursoControl = new FormControl('', [Validators.required])
 
 registerForm = new FormGroup({

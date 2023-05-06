@@ -38,7 +38,7 @@ export class InscripcionesComponent implements OnInit {
   dataSource = new MatTableDataSource<Inscripcion>();
 
   inscripcion: Inscripcion = {
-    id: this.inscripciones.length + 1, 
+    id: this.inscripciones.length + 1,
     alumno: { id: 0, nombre: "", apellido: "", sexo: "", email: "", pais: "" },
     curso: { id: 0, nombre: "", categoria: "", fechaInicio: new Date(), fechaFin: new Date(), info: ""}
   }
@@ -70,16 +70,17 @@ export class InscripcionesComponent implements OnInit {
     })
 
     dialog.afterClosed().subscribe((response) => {
+      console.log(response)
       this.onModify(inscripcion.id, response);
     });
   }
 
-  onAdd(recbirInscripcionPayload: RecibirInscripcionPayload) {
-    if(recbirInscripcionPayload){
+  onAdd(recibirInscripcionPayload: RecibirInscripcionPayload) {
+    if(recibirInscripcionPayload){
       let alumno: Alumno = { id:0, nombre: "", apellido: "", sexo: "", email: "", pais: ""};
        let curso: Curso = { id:0, nombre: "", categoria: "", fechaFin: new Date(), fechaInicio: new Date(), info: ""};
-      this.alumnosService.getAlumnoByName(recbirInscripcionPayload.alumno).subscribe((al) => alumno = al);
-      this.cursosService.getCursoByName(recbirInscripcionPayload.curso).subscribe((cur) => curso = cur);
+      this.alumnosService.getAlumnoById(recibirInscripcionPayload.alumno).subscribe((al) => alumno = al);
+      this.cursosService.getCursoByName(recibirInscripcionPayload.curso).subscribe((cur) => curso = cur);
 
      const inscripcionPayload =  {
         alumno,
@@ -97,7 +98,7 @@ export class InscripcionesComponent implements OnInit {
     if(recibirInscripcionPayload){
       let alumno: Alumno = { id:0, nombre: "", apellido: "", sexo: "", email: "", pais: ""};
         let curso: Curso = { id:0, nombre: "", categoria: "", fechaFin: new Date(), fechaInicio: new Date(), info: ""};
-        this.alumnosService.getAlumnoByName(recibirInscripcionPayload.alumno).subscribe((al) => alumno = al);
+        this.alumnosService.getAlumnoById(recibirInscripcionPayload.alumno).subscribe((al) => alumno = al);
         this.cursosService.getCursoByName(recibirInscripcionPayload.curso).subscribe((cur) => curso = cur);
 
       const inscripcion: Inscripcion = {id: inscripcionId, alumno, curso}
