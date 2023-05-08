@@ -34,6 +34,13 @@
                     <div class="p-2">
                         <p><span class="fw-bold"> Fecha Inicio: </span> {{inscripcion.curso.fechaInicio | date}}</p>
                         <p><span class="fw-bold"> Fecha Inicio: </span> {{inscripcion.curso.fechaFin | date}}</p>
+                        <button
+                        mat-button color="warn"
+                        (click)="eliminarInscripcion(inscripcion)"
+                        class="float-right"
+                      >
+                      Eliminar Inscripcion
+                      </button>
                     </div>
                 </div>
             </mat-card-content>
