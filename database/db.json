@@ -11,7 +11,12 @@
   ],
   "alumnos": [
     {
-      "id": 1
+      "id": 1,
+      "nombre": "Guadalupe",
+      "apellido": "Osuna",
+      "sexo": "Femenino",
+      "email": "lupita@email.com",
+      "pais": "Mexico"
     },
     {
       "id": 2,
@@ -80,10 +85,20 @@
   ],
   "cursos": [
     {
-      "id": 1
+      "id": 1,
+      "nombre": "Angular",
+      "categoria": "Programacion",
+      "fechaInicio": "Wed Apr 12 2023 00:00:00",
+      "fechaFin": "Mon Jun 12 2023 00:00:00",
+      "info": "Aprenderás a crear y mantener aplicaciones web en una sola página con Angular."
     },
     {
-      "id": 2
+      "id:" 2,
+      "nombre": "Java Inicial",
+      "categoria": "Programacion",
+      "fechaInicio": "Thu Jul 13 2023 00:00:00",
+      "fechaFin": "Fri Sep 08 2023 00:00:00",
+      "info": "Aprende los conocimientos teóricos y prácticos de la programación Java orientada a objetos."
     },
     {
       "id": 3,
@@ -93,8 +108,12 @@
       "fechaFin": "Sun Aug 13 2023 00:00:00",
       "info": "Aprende a diseñar y a ejecutar un proyecto de Investigación UX. Profundiza en los conceptos y metodologías propias de este prometedor campo de trabajo."
     },
-    {
-      "id": 4
+    { "id": 4,
+      "nombre": "UI",
+      "categoria": "Diseño UX/UI",
+      "fechaInicio": "Wed Oct 11 2023 00:00:00",
+      "fechaFin": "Tue Dec 10 2024 00:00:00",
+      "info": "Aprende a analizar y planificar la creación de un design system basado en Atomic Design Methodology."
     },
     {
       "id": 5,
