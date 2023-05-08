@@ -93,7 +93,7 @@
       "info": "Aprenderás a crear y mantener aplicaciones web en una sola página con Angular."
     },
     {
-      "id:" 2,
+      "id": 2,
       "nombre": "Java Inicial",
       "categoria": "Programacion",
       "fechaInicio": "Thu Jul 13 2023 00:00:00",
@@ -130,6 +130,48 @@
       "fechaInicio": "Fri Jun 16 2023 00:00:00",
       "fechaFin": "Sat Dec 30 2023 00:00:00",
       "info": "En este curso aprenderás la teoría e implementación de proyectos de Data Science. Crearás desde cero un modelo predictivo con Machine Learning."
+    }
+  ],
+  "inscripciones": [
+    {
+      "id": 1,
+      "alumno": {"id": 1, "nombre": "Guadalupe", "apellido": "Osuna", "sexo": "Femenino", "email": "lupita@email.com", "pais": "Mexico"},
+      "curso": { "id": 2, "nombre": "Java Inicial", "categoria": "Programacion", "fechaInicio": "Thu Jul 13 2023 00:00:00", "fechaFin": "Fri Sep 08 2023 00:00:00", "info": "Aprende los conocimientos teóricos y prácticos de la programación Java orientada a objetos."}
+    },
+    {
+      "id": 2,
+      "alumno": {"id": 1, "nombre": "Guadalupe", "apellido": "Osuna", "sexo": "Femenino", "email": "lupita@email.com", "pais": "Mexico"},
+      "curso": { "id": 1, "nombre": "Angular", "categoria": "Programacion", "fechaInicio": "Wed Apr 12 2023 00:00:00", "fechaFin": "Mon Jun 12 2023 00:00:00", "info": "Aprenderás a crear y mantener aplicaciones web en una sola página con Angular." }
+    },
+    {
+      "id": 3,
+      "alumno": {"id": 2, "nombre": "Berenice", "apellido": "Apodaca", "sexo": "Femenino", "email": "bere@email.com", "pais": "Mexico"},
+      "curso": { "id": 1, "nombre": "Angular", "categoria": "Programacion", "fechaInicio": "Wed Apr 12 2023 00:00:00", "fechaFin": "Mon Jun 12 2023 00:00:00", "info": "Aprenderás a crear y mantener aplicaciones web en una sola página con Angular." }
+    },
+    {
+      "id": 4,
+      "alumno": {"id": 2, "nombre": "Berenice", "apellido": "Apodaca", "sexo": "Femenino", "email": "bere@email.com", "pais": "Mexico"},
+      "curso":  { "id": 3, "nombre": "UX Research", "categoria": "Diseño UX/UI",  "fechaInicio": "Wed Oct 11 2023 00:00:00", "fechaFin": "Tue Dec 10 2024 00:00:00", "info": "Aprende a diseñar y a ejecutar un proyecto de Investigación UX. Profundiza en los conceptos y metodologías propias de este prometedor campo de trabajo."}
+    },
+    {
+      "id": 5,
+      "alumno": {"id": 3, "nombre": "Liliana", "apellido": "Osuna", "sexo": "Femenino", "email": "lili@email.com", "pais": "Mexico"},
+      "curso": { "id": 4, "nombre": "UI", "categoria": "Diseño UX/UI",  "fechaInicio": "Wed Oct 11 2023 00:00:00", "fechaFin": "Tue Dec 10 2024 00:00:00", "info": "Aprende a analizar y planificar la creación de un design system basado en Atomic Design Methodology."}
+    },
+    {
+      "id": 6,
+      "alumno": {"id": 5, "nombre": "Maricarmen", "apellido": "Colado", "sexo": "Femenino", "email": "mari@email.com", "pais": "Mexico"},
+      "curso":   { "id": 5, "nombre": "Business Analytics", "categoria": "Data", "fechaInicio": "Thu Jun 15 2023 00:00:00", "fechaFin": "Sat Aug 12 2023 00:00:00", "info": "Aprende sobre las metodologías y herramientas necesarias para medir el desempeño y la evolución de un negocio."}
+    },
+    {
+      "id": 7,
+      "alumno":  {"id": 7, "nombre": "Ivan", "apellido": "Osuna", "sexo": "Masculino", "email": "Ivan@email.com", "pais": "Mexico"},
+      "curso":{ "id": 6, "nombre": "Data Science", "categoria": "Data", "fechaInicio": "Fri Jun 16 2023 00:00:00", "fechaFin": "Sat Dec 30 2023 00:00:00", "info": "En este curso aprenderás la teoría e implementación de proyectos de Data Science. Crearás desde cero un modelo predictivo con Machine Learning."}
+    },
+    {
+      "id":8,
+      "alumno": {"id": 8, "nombre": "Rosina", "apellido": "Osuna", "sexo": "Femenino", "email": "rosii@email.com", "pais": "Mexico"},
+      "curso": { "id": 1, "nombre": "Angular", "categoria": "Programacion", "fechaInicio": "Wed Apr 12 2023 00:00:00", "fechaFin": "Mon Jun 12 2023 00:00:00", "info": "Aprenderás a crear y mantener aplicaciones web en una sola página con Angular." }
     }
   ]
 }
