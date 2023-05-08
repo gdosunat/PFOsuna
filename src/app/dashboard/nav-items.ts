@@ -19,6 +19,11 @@ interface NavItem {
     path: 'inscripciones',
     title: 'Inscripciones',
     icon: 'assignment'
+  }, 
+  {
+    path: 'usuarios',
+    title: 'Usuarios',
+    icon: 'supervised_user_circle'
   }
 ];
 

@@ -7,6 +7,14 @@
       "password": "123456",
       "token": "knaejhbghdasdaASASADdjsahashwq",
       "rol": "admin"
+    },
+    {
+      "id": 2,
+      "nombre": "Berenice",
+      "email": "berenice@email.com",
+      "password": "123456",
+      "token": "ajasjhbdjwuadjhdabadjadh8272",
+      "rol": "usuario"
     }
   ],
   "alumnos": [
