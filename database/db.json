@@ -11,12 +11,7 @@
   ],
   "alumnos": [
     {
-      "id": 1,
-      "nombre": "Guadalupe",
-      "apellido": "Osuna",
-      "sexo": "Femenino",
-      "email": "lupita@email.com",
-      "pais": "Mexico"
+      "id": 1
     },
     {
       "id": 2,
@@ -81,6 +76,41 @@
       "sexo": "Masculino",
       "email": "luis@email.com",
       "pais": "Mexico"
+    }
+  ],
+  "cursos": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3,
+      "nombre": "UX Research",
+      "categoria": "Diseño UX/UI",
+      "fechaInicio": "Fri Jun 16 2023 00:00:00",
+      "fechaFin": "Sun Aug 13 2023 00:00:00",
+      "info": "Aprende a diseñar y a ejecutar un proyecto de Investigación UX. Profundiza en los conceptos y metodologías propias de este prometedor campo de trabajo."
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5,
+      "nombre": "Business Analytics",
+      "categoria": "Data",
+      "fechaInicio": "Thu Jun 15 2023 00:00:00",
+      "fechaFin": "Sat Aug 12 2023 00:00:00",
+      "info": "Aprende sobre las metodologías y herramientas necesarias para medir el desempeño y la evolución de un negocio."
+    },
+    {
+      "id": 6,
+      "nombre": "Data Science",
+      "categoria": "Data",
+      "fechaInicio": "Fri Jun 16 2023 00:00:00",
+      "fechaFin": "Sat Dec 30 2023 00:00:00",
+      "info": "En este curso aprenderás la teoría e implementación de proyectos de Data Science. Crearás desde cero un modelo predictivo con Machine Learning."
     }
   ]
 }
