@@ -13,4 +13,45 @@
     <p>Finaliza: {{curso.fechaFin | date}}</p>
   </div>
   <mat-divider/>
+  <div class="col-md-8 offset-md-2 mt-4">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id </th>
+          <td mat-cell *matCellDef="let inscripcion">{{inscripcion.alumno.id}}</td>
+      </ng-container>
+          
+      <ng-container matColumnDef="apellido">
+          <th mat-header-cell *matHeaderCellDef>Nombre completo</th>
+          <td mat-cell *matCellDef="let inscripcion">{{inscripcion.alumno | nombreCompleto}}</td>
+      </ng-container>
+          
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Correo </th>
+        <td mat-cell *matCellDef="let inscripcion">{{inscripcion.alumno.email}}</td>
+      </ng-container>
+          
+      <ng-container matColumnDef="sexo">
+        <th mat-header-cell *matHeaderCellDef>Sexo </th>
+        <td mat-cell *matCellDef="let inscripcion">{{inscripcion.alumno.sexo}}</td>
+      </ng-container>
+          
+      <ng-container matColumnDef="pais">
+        <th mat-header-cell *matHeaderCellDef>Pais </th>
+        <td mat-cell *matCellDef="let inscripcion">{{inscripcion.alumno.pais}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="accion">
+        <th mat-header-cell *matHeaderCellDef class="action-column">Accion </th>
+        <td mat-cell *matCellDef="let inscripcion">
+          <button mat-icon-button color="warn" (click)="openConfirmationDialog(inscripcion)" *ngIf="(authUser$ | async)?.rol == 'admin'">
+            <mat-icon>delete</mat-icon>
+        </button>
+        </td>
+        </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
 </div>

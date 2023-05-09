@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Curso, CrearCursoPayload, CategoriasCursos } from '../models';
 import { BehaviorSubject, Observable, take } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { InscripcionesService } from '../../inscripciones/services/inscripciones.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 export class CursosService {
 
   constructor(
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private inscripcionesService: InscripcionesService
   ) { }
 
   categorias: string[] = ["Programacion", "Diseño UX/UI", "Data"]

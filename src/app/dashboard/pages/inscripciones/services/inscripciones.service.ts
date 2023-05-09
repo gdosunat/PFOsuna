@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, take } from 'rxjs';
 import { CrearInscripcionPayload, Inscripcion } from '../models';
 import { HttpClient } from '@angular/common/http';
+import { CursoDetailsComponent } from '../../cursos/components/curso-details/curso-details.component';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,17 @@ export class InscripcionesService {
       if(inscripciones){
         const alumnoInscripciones = inscripciones.filter((inscripcion) => inscripcion.alumno.id == alumnoId)
         this.inscripciones$.next(alumnoInscripciones);
+      }
+    })
+    return this.inscripciones$.asObservable();
+  }
+
+  getInscripcionesByCursoId(cursoId: number): Observable<Inscripcion[]>{
+    this.httpClient.get<Inscripcion[]>(`http://localhost:3000/inscripciones`)
+    .subscribe((inscripciones) => {
+      if(inscripciones){
+        const cursoInscripciones = inscripciones.filter((inscripcion) => inscripcion.curso.id == cursoId);
+        this.inscripciones$.next(cursoInscripciones)
       }
     })
     return this.inscripciones$.asObservable();

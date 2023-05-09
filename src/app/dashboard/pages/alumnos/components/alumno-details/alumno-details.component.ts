@@ -27,6 +27,7 @@ export class AlumnoDetailsComponent implements OnInit{
  alumno = {id: 1, nombre: "Guadalupe", apellido: "Osuna", sexo: "Femenino", email: "lupita@email.com", pais: "Mexico"}
  inscripciones = [{id: 0, alumno: {id: 0, nombre: "", apellido: "", sexo: "", email: "", pais: ""}, curso: {id: 0, nombre: "", categoria: "", fechaInicio: new Date(), fechaFin: new Date(), info: ""}}]
  icon = this.alumno.sexo === "Femenino" ? "assets/img/female-icon.jpg" : "assets/img/male-icon.jpg";
+
  eliminarInscripcion(inscripcion: Inscripcion): void {
   this.inscripcionesService.deleteInscripcion(inscripcion.id);
  }
