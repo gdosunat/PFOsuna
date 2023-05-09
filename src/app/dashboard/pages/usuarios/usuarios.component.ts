@@ -70,6 +70,7 @@ export class UsuariosComponent {
 
   onAdd(usuarioPayload: CrearUsuarioPayload) {
     if(usuarioPayload){
+      usuarioPayload.token = this.generateToken();
       this.usuariosService.addNewUsuario(usuarioPayload).subscribe((usuariosUpdated) => {
         this.dataSource.data = usuariosUpdated;
       })
@@ -88,5 +89,15 @@ export class UsuariosComponent {
     this.usuariosService.deleteUsuario(usuario.id).subscribe((usuariosUpdated) => {
       this.dataSource.data = usuariosUpdated;
     });
+  }
+
+  generateToken(){
+    let token = "";
+    let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (let i = 0; i < length; i++) {
+      token += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    return token;
   }
 }

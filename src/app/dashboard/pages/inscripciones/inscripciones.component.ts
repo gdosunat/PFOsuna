@@ -9,6 +9,9 @@ import { AlumnosService } from '../alumnos/services/alumnos.service';
 import { CursosService } from '../cursos/services/cursos.service';
 import { Alumno } from '../alumnos/models';
 import { Curso } from '../cursos/models';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/auth/models';
 
 @Component({
   selector: 'app-inscripciones',
@@ -21,10 +24,14 @@ export class InscripcionesComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private inscripcionesService: InscripcionesService,
     private alumnosService: AlumnosService,
-    private cursosService: CursosService
-    ) {}
+    private cursosService: CursosService,
+    private authService: AuthService
+    ) {
+      this.authUser$ = this.authService.getLoggedInUser();
+    }
 
-  inscripciones: Inscripcion[] = []
+  inscripciones: Inscripcion[] = [];
+  authUser$: Observable<Usuario | null>;
 
   ngOnInit(): void {
     this.inscripcionesService.getAllInscripciones()

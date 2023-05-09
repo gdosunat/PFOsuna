@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Usuario } from 'src/app/auth/models';
 
 @Component({
   selector: 'app-confirmation-dialog',
@@ -7,4 +9,7 @@ import { Component } from '@angular/core';
 })
 export class ConfirmationDialogComponent {
 
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: Usuario,
+  ) {}
 }

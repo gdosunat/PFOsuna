@@ -16,7 +16,6 @@ export class AddNewUsuarioDialogComponent {
       this.emailControl.setValue(data.email),
       this.rolControl.setValue(data.rol),
       this.passwordControl.setValue(data.password)
-      this.tokenControl.setValue(data.token)
     }
    }
 
@@ -24,19 +23,17 @@ export class AddNewUsuarioDialogComponent {
 
   nombreControl = new FormControl('', [Validators.required, Validators.minLength(5)])
   emailControl = new FormControl('', [Validators.required, Validators.email])
-  rolControl = new FormControl('', [Validators.required])
+  rolControl = new FormControl('usuario', [Validators.required])
   passwordControl = new FormControl('', [Validators.required])
-  tokenControl = new FormControl('', [Validators.required])
 
   registerForm = new FormGroup({
     nombre: this.nombreControl,
     email: this.emailControl,
     password: this.passwordControl,
-    token: this.tokenControl
+    rol: this.rolControl
   })
 
   submitForm(): void {
-
     if(this.registerForm.valid){
       this.dialogRef.close(this.registerForm.value);
     } else {

@@ -17,6 +17,7 @@ import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dia
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { UsuarioDetailsComponent } from './components/usuario-details/usuario-details.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     AddNewUsuarioDialogComponent,
     ConfirmationDialogComponent,
     ErrorDialogComponent,
-    DialogComponent
+    DialogComponent,
+    UsuarioDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,10 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
       {
         path: '',
         component: UsuariosComponent
+      },
+      {
+        path: ':id',
+        component: UsuarioDetailsComponent
       }
     ])
   ]

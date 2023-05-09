@@ -25,6 +25,21 @@ export class UsuariosService {
     return this.usuarios$.asObservable();
   }
 
+  getUsuarioById(usuarioId: number): Observable<Usuario>{
+    this.httpClient.get<Usuario[]>(`http://localhost:3000/usuarios`, {
+      params: {id: usuarioId}
+    })
+    .subscribe((usuarios) => {
+      if(usuarios){
+        this.usuario$.next(usuarios[0])
+      } else {
+        console.log("ERROR: Usuario no encontrado");
+      }
+    })
+
+    return this.usuario$.asObservable();
+  }
+
   addNewUsuario(usuarioPayload: CrearUsuarioPayload): Observable<Usuario[]>{
     this.httpClient.post<Usuario>(`http://localhost:3000/usuarios`, usuarioPayload).subscribe((nuevoUsuario) => {
       this.usuarios$
