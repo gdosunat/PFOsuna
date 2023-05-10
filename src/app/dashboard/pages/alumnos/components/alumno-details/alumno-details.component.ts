@@ -32,3 +32,4 @@ export class AlumnoDetailsComponent implements OnInit{
   this.inscripcionesService.deleteInscripcion(inscripcion.id);
  }
 }
+

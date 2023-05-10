@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { InscripcionesService } from './services/inscripciones.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CrearInscripcionPayload, Inscripcion, RecibirInscripcionPayload } from './models';
+import { Inscripcion, RecibirInscripcionPayload } from './models';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddNewInscripcionDialogComponent } from './components/dialog/add-new-inscripcion-dialog/add-new-inscripcion-dialog.component';
 import { ConfirmationDialogComponent } from './components/dialog/confirmation-dialog/confirmation-dialog.component';
@@ -100,7 +100,6 @@ export class InscripcionesComponent implements OnInit {
     }
   }
 
-
   onModify(inscripcionId: number, recibirInscripcionPayload: RecibirInscripcionPayload){
     if(recibirInscripcionPayload){
       let alumno: Alumno = { id:0, nombre: "", apellido: "", sexo: "", email: "", pais: ""};
@@ -115,7 +114,6 @@ export class InscripcionesComponent implements OnInit {
       });
     }
   }
-
 
   onDelete(inscripcion: Inscripcion): void {
     this.inscripcionesService.deleteInscripcion(inscripcion.id).subscribe((inscripcionesUpdated) => {
