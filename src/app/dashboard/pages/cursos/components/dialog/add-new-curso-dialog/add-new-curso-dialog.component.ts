@@ -22,8 +22,8 @@ export class AddNewCursoDialogComponent {
     if(data){
       this.nombreControl.setValue(data.nombre),
       this.categoriaControl.setValue(data.categoria),
-      this.fechaInicioControl.setValue(data.fechaInicio),
-      this.fechaFinControl.setValue(data.fechaFin),
+      this.fechaInicioControl.setValue(new Date(data.fechaInicio)),
+      this.fechaFinControl.setValue(new Date(data.fechaFin)),
       this.infoControl.setValue(data.info)
     }
    }

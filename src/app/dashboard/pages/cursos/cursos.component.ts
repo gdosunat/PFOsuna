@@ -5,6 +5,9 @@ import { MatDialog,  } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddNewCursoDialogComponent } from './components/dialog/add-new-curso-dialog/add-new-curso-dialog.component';
 import { ConfirmationDialogComponent } from './components/dialog/confirmation-dialog/confirmation-dialog.component';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/auth/models';
 
 @Component({
   selector: 'app-cursos',
@@ -16,10 +19,14 @@ export class CursosComponent implements OnInit{
   constructor(
     private matDialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
-    private cursosService: CursosService
-    ) {}
+    private cursosService: CursosService,
+    private authService: AuthService
+    ) {
+      this.authUser$ = this.authService.getLoggedInUser();
+    }
 
   cursos: Curso[] = []
+  authUser$: Observable<Usuario | null>;
 
   ngOnInit(): void {
     this.cursosService.getAllCursos()

@@ -1,7 +1,8 @@
 interface NavItem {
   path: string,
   title: string,
-  icon: string
+  icon: string,
+  roles: string[]
  }
 
  const links: NavItem[] = [
@@ -9,16 +10,25 @@ interface NavItem {
     path: 'alumnos',
     title: 'Alumnos',
     icon: 'person',
+    roles: ['admin', 'usuario']
   },
   {
     path: 'cursos',
     title: 'Cursos',
-    icon: 'school'
+    icon: 'school',
+    roles: ['admin', 'usuario']
   },
   {
     path: 'inscripciones',
     title: 'Inscripciones',
-    icon: 'assignment'
+    icon: 'assignment',
+    roles: ['admin', 'usuario']
+  },
+  {
+    path: 'usuarios',
+    title: 'Usuarios',
+    icon: 'supervised_user_circle',
+    roles: ['admin']
   }
 ];
 

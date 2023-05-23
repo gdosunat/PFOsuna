@@ -11,3 +11,11 @@ export interface LoginPayload {
   email: string,
   password: string
 }
+
+export interface CrearUsuarioPayload {
+  nombre: string,
+  email: string,
+  password: string,
+  rol: string,
+  token: string
+}

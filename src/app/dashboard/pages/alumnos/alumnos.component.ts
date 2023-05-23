@@ -5,6 +5,9 @@ import { Alumno, CrearAlumnoPayload } from './models';
 import { AlumnosService } from './services/alumnos.service';
 import { AddNewStudentDialogComponent } from './components/dialog/add-new-student-dialog/add-new-student-dialog.component';
 import { ConfirmationDialogComponent } from './components/dialog/confirmation-dialog/confirmation-dialog.component';
+import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/auth/models';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -15,10 +18,14 @@ export class AlumnosComponent implements OnInit{
   constructor(
     private matDialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
-    private alumnosService: AlumnosService
-    ) {}
+    private alumnosService: AlumnosService,
+    private authService: AuthService
+    ) {
+      this.authUser$ = this.authService.getLoggedInUser();
+    }
 
   alumnos: Alumno[] = []
+  authUser$: Observable<Usuario | null>;
 
   ngOnInit(): void {
     this.alumnosService.getAllAlumnos()

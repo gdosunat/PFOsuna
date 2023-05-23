@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="registerForm" class="form">
+    <div class="mb-4 mt-2">
+        <mat-form-field appearance="fill" class="mr-2 mid-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput required [formControl]="nombreControl">
+            <mat-hint>El nombre de tener como minimo 5 caracteres</mat-hint>
+            <mat-error *ngFor="let error of nombreControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="mid-width">
+            <mat-label>Email</mat-label>
+            <input matInput required [formControl]="emailControl">
+            <mat-hint>El email de tener como minimo 4 caracteres</mat-hint>
+            <mat-error *ngFor="let error of emailControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+    </mat-form-field>
+    </div>
+    <div>
+      <h4 class="mb-1">Rol</h4>
+      <mat-button-toggle-group [formControl]="rolControl" aria-label="Font Style" required>
+        <mat-button-toggle value="admin">Administrador</mat-button-toggle>
+        <mat-button-toggle value="usuario">Usuario</mat-button-toggle>
+      </mat-button-toggle-group>
+      <mat-error *ngFor="let error of rolControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+    </div>
+    <mat-form-field appearance="fill" class="full-width mt-2">
+      <mat-label>Password</mat-label>
+      <input matInput required [formControl]="passwordControl" type="password">
+      <mat-icon matSuffix>password</mat-icon>
+      <mat-error *ngFor="let error of passwordControl.errors | keyvalue">{{error | controlErrores}} </mat-error>
+    </mat-form-field>
+</form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button cdkFocusInitial (click)="submitForm()">Guardar</button>
+</mat-dialog-actions>

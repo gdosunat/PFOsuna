@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { InscripcionesService } from './services/inscripciones.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CrearInscripcionPayload, Inscripcion, RecibirInscripcionPayload } from './models';
+import { Inscripcion, RecibirInscripcionPayload } from './models';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddNewInscripcionDialogComponent } from './components/dialog/add-new-inscripcion-dialog/add-new-inscripcion-dialog.component';
 import { ConfirmationDialogComponent } from './components/dialog/confirmation-dialog/confirmation-dialog.component';
@@ -9,6 +9,9 @@ import { AlumnosService } from '../alumnos/services/alumnos.service';
 import { CursosService } from '../cursos/services/cursos.service';
 import { Alumno } from '../alumnos/models';
 import { Curso } from '../cursos/models';
+import { AuthService } from 'src/app/auth/services/auth.service';
+import { Observable } from 'rxjs';
+import { Usuario } from 'src/app/auth/models';
 
 @Component({
   selector: 'app-inscripciones',
@@ -21,10 +24,14 @@ export class InscripcionesComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private inscripcionesService: InscripcionesService,
     private alumnosService: AlumnosService,
-    private cursosService: CursosService
-    ) {}
+    private cursosService: CursosService,
+    private authService: AuthService
+    ) {
+      this.authUser$ = this.authService.getLoggedInUser();
+    }
 
-  inscripciones: Inscripcion[] = []
+  inscripciones: Inscripcion[] = [];
+  authUser$: Observable<Usuario | null>;
 
   ngOnInit(): void {
     this.inscripcionesService.getAllInscripciones()
@@ -93,7 +100,6 @@ export class InscripcionesComponent implements OnInit {
     }
   }
 
-
   onModify(inscripcionId: number, recibirInscripcionPayload: RecibirInscripcionPayload){
     if(recibirInscripcionPayload){
       let alumno: Alumno = { id:0, nombre: "", apellido: "", sexo: "", email: "", pais: ""};
@@ -108,7 +114,6 @@ export class InscripcionesComponent implements OnInit {
       });
     }
   }
-
 
   onDelete(inscripcion: Inscripcion): void {
     this.inscripcionesService.deleteInscripcion(inscripcion.id).subscribe((inscripcionesUpdated) => {

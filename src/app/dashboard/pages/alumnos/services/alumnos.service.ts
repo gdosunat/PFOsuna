@@ -35,7 +35,7 @@ export class AlumnosService {
       if(alumnos){
         this.alumno$.next(alumnos[0]);
       } else {
-        console.log("ERROR: Usuario no encontrado")
+        console.log("ERROR: Alumno no encontrado")
       }
     })
 

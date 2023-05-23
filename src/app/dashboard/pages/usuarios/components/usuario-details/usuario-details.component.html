@@ -1,0 +1,21 @@
+<div class="container p-2">
+  <h1 class="text-center">Perfil de Usuario</h1>
+  <div class="row">
+      <div class="col-md-6 offset-md-3">
+          <mat-card class="example-card">
+              <mat-card-header>
+               <mat-card-title>{{usuario.nombre}}</mat-card-title>
+              <mat-card-subtitle>{{usuario.rol}}</mat-card-subtitle>
+              <div class="col-8 mb-3 d-flex justify-content-end">
+                <img width="50" height="50" src="assets/img/avatar.svg">
+              </div>
+              </mat-card-header>
+              <mat-card-content>
+                  <div class="card p-2">
+                      <p>Email: {{usuario.email}}</p>
+                  </div>
+              </mat-card-content>
+          </mat-card>
+    </div>
+  </div>
+</div>
