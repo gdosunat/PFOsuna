@@ -78,6 +78,7 @@ export class InscripcionesService {
       )
       .subscribe({
         next: (inscripciones => {
+          console.log(nuevaInscripcion)
           inscripciones.push(nuevaInscripcion);
           this.inscripciones$.next(inscripciones)
         })

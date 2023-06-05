@@ -8,6 +8,9 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { AlumnosModule } from './dashboard/pages/alumnos/alumnos.module';
 import { CursosModule } from './dashboard/pages/cursos/cursos.module';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { actionReducerMap } from './store';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { HttpClientModule } from '@angular/common/http';
     DashboardModule,
     AlumnosModule,
     CursosModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(actionReducerMap, {}),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

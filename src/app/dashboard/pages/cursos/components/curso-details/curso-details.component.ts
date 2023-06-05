@@ -32,7 +32,6 @@ export class CursoDetailsComponent implements OnInit{
      this.inscripcionesService.getInscripcionesByCursoId(params['id']).subscribe((inscripciones) => {
       this.inscripciones = inscripciones
       this.dataSource.data = inscripciones
-      console.log(inscripciones)
      })
    }
      )
@@ -44,7 +43,7 @@ export class CursoDetailsComponent implements OnInit{
   dataSource = new MatTableDataSource<Inscripcion>();
   displayedColumns: string[] = ['id', 'apellido', 'sexo', 'email', 'pais', 'accion'];
   authUser$: Observable<Usuario | null>;
-  
+
   eliminarInscripcion(inscripcion: Inscripcion): void {
     this.inscripcionesService.deleteInscripcion(inscripcion.id);
    }

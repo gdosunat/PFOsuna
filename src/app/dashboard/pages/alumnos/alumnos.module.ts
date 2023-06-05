@@ -21,6 +21,10 @@ import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dia
 import { AddNewStudentDialogComponent } from './components/dialog/add-new-student-dialog/add-new-student-dialog.component';
 import { AlumnoDetailsComponent } from './components/alumno-details/alumno-details.component';
 import { RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { AlumnosEffects } from './store/alumnos.effects';
+import { alumnosFeature } from './store/alumnos.reducer';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -56,7 +60,9 @@ import { RouterModule } from '@angular/router';
         path: ':id',
         component: AlumnoDetailsComponent
       }
-    ])
+    ]),
+    StoreModule.forFeature(alumnosFeature),
+    EffectsModule.forFeature([AlumnosEffects])
   ]
 })
 export class AlumnosModule { }

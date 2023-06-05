@@ -8,6 +8,10 @@ import { ConfirmationDialogComponent } from './components/dialog/confirmation-di
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/auth/models';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { Store } from '@ngrx/store';
+import { State } from './store/alumnos.reducer';
+import { selectAlumnosState } from './store/alumnos.selectors';
+import { AlumnosActions } from './store/alumnos.actions';
 
 @Component({
   selector: 'app-alumnos',
@@ -19,19 +23,22 @@ export class AlumnosComponent implements OnInit{
     private matDialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
     private alumnosService: AlumnosService,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store
     ) {
       this.authUser$ = this.authService.getLoggedInUser();
+      this.alumnosState$ = this.store.select(selectAlumnosState)
+      this.alumnosState$.subscribe(response => {
+        this.dataSource.data = response.alumnosList
+      })
     }
 
+  alumnosState$: Observable<State>
   alumnos: Alumno[] = []
   authUser$: Observable<Usuario | null>;
 
   ngOnInit(): void {
-    this.alumnosService.getAllAlumnos()
-    .subscribe((alumnos) => {
-      this.dataSource.data = alumnos
-    });
+    this.store.dispatch(AlumnosActions.loadAlumnos())
   }
 
 

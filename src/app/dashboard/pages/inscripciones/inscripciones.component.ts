@@ -12,6 +12,10 @@ import { Curso } from '../cursos/models';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/auth/models';
+import { Store } from '@ngrx/store';
+import { InscripcionesActions } from './store/inscripciones.actions';
+import { State } from './store/inscripciones.reducer';
+import { selectInscripcionesState } from './store/inscripciones.selectors';
 
 @Component({
   selector: 'app-inscripciones',
@@ -25,19 +29,22 @@ export class InscripcionesComponent implements OnInit {
     private inscripcionesService: InscripcionesService,
     private alumnosService: AlumnosService,
     private cursosService: CursosService,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store
     ) {
       this.authUser$ = this.authService.getLoggedInUser();
+      this.inscripcionesState$ = this.store.select(selectInscripcionesState)
+      this.inscripcionesState$.subscribe(response => {
+        this.dataSource.data = response.inscripcionesList
+      })
     }
 
+    inscripcionesState$: Observable<State>
   inscripciones: Inscripcion[] = [];
   authUser$: Observable<Usuario | null>;
 
   ngOnInit(): void {
-    this.inscripcionesService.getAllInscripciones()
-    .subscribe((inscripciones) => {
-      this.dataSource.data = inscripciones;
-    });
+    this.store.dispatch(InscripcionesActions.loadInscripciones())
   }
 
 

@@ -21,6 +21,10 @@ import { AddNewInscripcionDialogComponent } from './components/dialog/add-new-in
 import { ConfirmationDialogComponent } from './components/dialog/confirmation-dialog/confirmation-dialog.component';
 import { ErrorDialogComponent } from './components/dialog/error-dialog/error-dialog.component';
 import { InscripcionDetailsComponent } from './components/inscripcion-details/inscripcion-details.component';
+import { EffectsModule } from '@ngrx/effects';
+import { InscripcionesEffects } from './store/inscripciones.effects';
+import { StoreModule } from '@ngrx/store';
+import { inscripcionesFeature } from './store/inscripciones.reducer';
 
 const routes: Routes = [
   {
@@ -59,7 +63,9 @@ const routes: Routes = [
     MatCardModule,
     PipesModule,
     MatDividerModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    EffectsModule.forFeature([InscripcionesEffects]),
+    StoreModule.forFeature(inscripcionesFeature)
   ]
 })
 export class InscripcionesModule { }

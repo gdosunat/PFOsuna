@@ -293,6 +293,44 @@
         "fechaFin": "Mon Jun 12 2023 00:00:00",
         "info": "Aprenderás a crear y mantener aplicaciones web en una sola página con Angular."
       }
+    },
+    {
+      "alumno": {
+        "id": 0,
+        "nombre": "",
+        "apellido": "",
+        "sexo": "",
+        "pais": "",
+        "email": ""
+      },
+      "curso": {
+        "id": 0,
+        "nombre": "",
+        "categoria": "",
+        "fechaInicio": "2023-06-05T02:07:59.745Z",
+        "fechaFin": "2023-06-05T02:07:59.745Z",
+        "info": ""
+      },
+      "id": 9
+    },
+    {
+      "alumno": {
+        "id": 0,
+        "nombre": "",
+        "apellido": "",
+        "sexo": "",
+        "pais": "",
+        "email": ""
+      },
+      "curso": {
+        "id": 0,
+        "nombre": "",
+        "categoria": "",
+        "fechaInicio": "2023-06-05T02:08:52.551Z",
+        "fechaFin": "2023-06-05T02:08:52.551Z",
+        "info": ""
+      },
+      "id": 10
     }
   ]
 }
